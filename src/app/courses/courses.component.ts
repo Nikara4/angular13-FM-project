@@ -13,12 +13,42 @@ export class CoursesComponent implements OnInit {
       description: 'Learn the fundamentals of Angular 13',
       percentComplete: 26,
       favorite: true
+    },
+    {
+      id: 2,
+      title: 'JavaScript the HARDEST PARTS EVER!',
+      description: 'Learn JavaScript like a pro! with Will',
+      percentComplete: 15,
+      favorite: true
+    },
+    {
+      id: 3,
+      title: 'Python Basics',
+      description: 'Discover a love for Python with this course.',
+      percentComplete: 30,
+      favorite: true
+    },
+    {
+      id: 4,
+      title: 'Java Expert',
+      description: 'Become an expert in Java with Jacob',
+      percentComplete: 16,
+      favorite: true
     }
   ];
+  selectedCourse = null;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  selectCourse(course) {
+    this.selectedCourse = course;
+  }
+
+  deleteCourse(courseId) {
+    console.log('delete course', courseId);
   }
 
 }
