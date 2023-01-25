@@ -17,7 +17,17 @@ export class HomeComponent implements OnInit {
     { title: 'Unit Testing Fundamentals' },
   ];
 
+  selectedLesson = null;
+
   constructor() {}
 
   ngOnInit() {}
+
+  selectLesson(lesson: unknown) {
+    this.selectedLesson = lesson;
+  }
+
+  deleteLesson(lessonTitle: unknown) {
+    console.log('delete lesson', lessonTitle);
+  }
 }

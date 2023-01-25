@@ -43,12 +43,16 @@ export class CoursesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  selectCourse(course) {
+  selectCourse(course: unknown) {
     this.selectedCourse = course;
   }
 
-  deleteCourse(courseId) {
+  deleteCourse(courseId: unknown) {
     console.log('delete course', courseId);
+  }
+
+  form() {
+    console.log('delete');
   }
 
 }
