@@ -33,18 +33,60 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <span *ngIf="selectedCourse?.id; else elseBlock">{{
+          <span *ngIf="selectedCourse.id; else elseBlock">{{
             selectedCourse.title | titlecase
           }}</span>
           <ng-template #elseBlock>Select a Course</ng-template></mat-card-title
         >
       </mat-card-header>
-      <mat-card-content>
-        <pre>{{ selectedCourse | json }}</pre>
-      </mat-card-content>
-      <mat-card-actions>
-        <button type="button" mat-button (click)="selectCourse(null)">Cancel</button>
-      </mat-card-actions>
+      <form #form="ngForm">
+        <mat-card-content>
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Title"
+              [(ngModel)]="selectedCourse.title"
+              name="title"
+              required
+              type="text"
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              matInput
+              placeholder="Description"
+              [(ngModel)]="selectedCourse.description"
+              name="description"
+              type="text"
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-slider
+              min="1"
+              max="100"
+              step="1"
+              [(ngModel)]="selectedCourse.percentComplete"
+              placeholder="Percentage Completed"
+            >
+              <input matSliderThumb />
+            </mat-slider>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-checkbox
+            placeholder="Favorite"
+              [(ngModel)]="selectedCourse.favorite"
+              labelPosition="after"
+              (ngModelChange)="updateFavoriteChange()"
+              >Favorite</mat-checkbox
+            >
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="button" mat-button (click)="reset()">Cancel</button>
+        </mat-card-actions>
+      </form>
+      <hr />
+      <pre>{{ form?.value | json }}</pre>
     </mat-card>
   </div>
 </div>
