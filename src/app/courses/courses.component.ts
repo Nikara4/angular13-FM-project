@@ -27,7 +27,7 @@ export class CoursesComponent implements OnInit {
       id: '2',
       title: 'JavaScript the HARDEST PARTS EVER!',
       description: 'Learn JavaScript like a pro! with Will',
-      percentComplete: 15,
+      percentComplete: 85,
       favorite: true,
     },
     {
@@ -41,19 +41,21 @@ export class CoursesComponent implements OnInit {
       id: '4',
       title: 'Java Expert',
       description: 'Become an expert in Java with Jacob',
-      percentComplete: 16,
-      favorite: true,
+      percentComplete: 100,
+      favorite: false,
     },
   ];
 
   selectedCourse = emptyCourse;
+  originalTitle: string;
 
   constructor() {}
 
   ngOnInit(): void {}
 
   selectCourse(course: Course) {
-    this.selectedCourse = course;
+    this.originalTitle = course.title;
+    this.selectedCourse = { ...course };
   }
 
   deleteCourse(courseId: unknown) {
@@ -64,7 +66,7 @@ export class CoursesComponent implements OnInit {
     this.selectCourse({ ...emptyCourse });
   }
 
-  updateFavoriteChange() {
-    this.selectCourse;
+  saveCourse(course: Course) {
+    console.log('save course', course);
   }
 }
