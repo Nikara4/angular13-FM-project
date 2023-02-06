@@ -2,10 +2,24 @@
   "courses": [
     {
       "id": 1,
-      "title": "Angular 13 Fundamentals",
+      "title": "Angular 13 Fundamentals shshshshshhshshshshshshshshshs",
       "description": "Learn the fundamentals of Angular 13",
       "percentComplete": 26,
       "favorite": true
+    },
+    {
+      "id": 2,
+      "title": "aasdsa",
+      "description": "d`wdwd",
+      "percentComplete": 4,
+      "favorite": true
+    },
+    {
+      "id": 3,
+      "title": "co jak dodam",
+      "description": "tutaj",
+      "percentComplete": 0,
+      "favorite": false
     }
   ]
 }

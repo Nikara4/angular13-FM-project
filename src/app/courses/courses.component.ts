@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from '../common/models/course';
+import { CoursesService } from '../common/services/courses.service';
+import { Observable } from 'rxjs';
 
 const emptyCourse: Course = {
   id: null,
@@ -15,47 +17,20 @@ const emptyCourse: Course = {
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent implements OnInit {
-  courses = [
-    {
-      id: '1',
-      title: 'Angular 13 Fundamentals',
-      description: 'Learn the fundamentals of Angular 13',
-      percentComplete: 26,
-      favorite: true,
-    },
-    {
-      id: '2',
-      title: 'JavaScript the HARDEST PARTS EVER!',
-      description: 'Learn JavaScript like a pro! with Will',
-      percentComplete: 85,
-      favorite: true,
-    },
-    {
-      id: '3',
-      title: 'Python Basics',
-      description: 'Discover a love for Python with this course.',
-      percentComplete: 30,
-      favorite: true,
-    },
-    {
-      id: '4',
-      title: 'Java Expert',
-      description: 'Become an expert in Java with Jacob',
-      percentComplete: 100,
-      favorite: false,
-    },
-  ];
-
+  courses = [];
+  courses$: any;
   selectedCourse = emptyCourse;
   originalTitle: string;
 
-  constructor() {}
+  constructor(private coursesService: CoursesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.courses = this.coursesService.courses;
+    this.fetchCourses();
+  }
 
   selectCourse(course: Course) {
-    this.originalTitle = course.title;
-    this.selectedCourse = { ...course };
+    this.selectedCourse = course;
   }
 
   deleteCourse(courseId: unknown) {
@@ -67,6 +42,22 @@ export class CoursesComponent implements OnInit {
   }
 
   saveCourse(course: Course) {
-    console.log('save course', course);
+    if (course.id) {
+      this.updateCourse(course);
+    } else {
+      this.createCourse(course);
+    }
+  }
+
+  createCourse(course: Course) {
+    this.coursesService.create(course).subscribe(result => this.fetchCourses());
+  }
+
+  updateCourse(course: Course) {
+    this.coursesService.update(course).subscribe(result => this.fetchCourses());
+  }
+
+  fetchCourses() {
+    this.courses$ = this.coursesService.all();
   }
 }
