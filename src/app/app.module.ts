@@ -11,6 +11,10 @@ import { CoursesComponent } from './courses/courses.component';
 import { FormsModule } from '@angular/forms';
 import { CoursesListComponent } from './courses/courses-list/courses-list.component';
 import { CoursesDetailsComponent } from './courses/courses-details/courses-details.component';
+import { AdminComponent } from './examples/child-routes/admin.component';
+import { AdminPayrollComponent } from './examples/child-routes/payroll/payroll.component';
+import { AdminVacationComponent } from './examples/child-routes/vacation/vacation.component';
+import { ExamplesComponent } from './examples/examples.component';
 
 @NgModule({
   imports: [
@@ -21,7 +25,17 @@ import { CoursesDetailsComponent } from './courses/courses-details/courses-detai
     MaterialModule,
     HttpClientModule,
   ],
-  declarations: [AppComponent, HomeComponent, CoursesComponent, CoursesListComponent, CoursesDetailsComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    CoursesComponent,
+    CoursesListComponent,
+    CoursesDetailsComponent,
+    AdminComponent,
+    AdminPayrollComponent,
+    AdminVacationComponent,
+    ExamplesComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
